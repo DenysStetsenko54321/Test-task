@@ -29,8 +29,10 @@ describe('test task for QA Automation position', () => {
     cy.get('[placeholder="Apartment, suite, etc. (optional)"]').type('17')
     cy.get('[placeholder="City"]').type('Kyiv')
     cy.get('[placeholder="Postal code"]').type('12345')
-    cy.get('.icon-svg').click({force: true})
-    
+    cy.get('[data-continue-button-content="true"]').click({force: true})
+    cy.get('.input-radio').eq(1).click()
+    cy.get('#continue_button').click()
+    cy.get('#blank-slate').should('contain', 'This store can’t accept payments right now.')
   })
 })
 
